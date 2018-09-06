@@ -1,11 +1,29 @@
-const http = require('http');
+/*jshint esversion: 6*/
 
-const hostname = '127.0.0.1';
-const port = 1337;
+var http = require('http');
+var url = require('url');
+var qs = require('querystring');
+var express = require('express');
 
-http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Hello World\n');
-}).listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+var app = express();
+
+app.get('/', function (req, res) {
+  res.redirect('/board');
+});
+
+app.get('/board', function (req, res) {
+  var board = req.query('board');
+  var postId = req.query('postid');
+  if (board == 'freeboard') {
+
+  } else if (board == 'notice') {
+
+  } else if (board == 'suggest') {
+
+  } else if (board == 'storage') {
+
+  } else {
+    res.redirect('/404');
+  }
+  res.send();
 });
