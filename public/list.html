@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Board</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <ul>
+      <script type="text/javascript">
+        $.ajax({
+          url: '/boardWork/list',
+          type: 'GET',
+          dataType: 'html',
+          data: {param1: 'value1'}
+        })
+        .done(function() {
+          console.log("success");
+        })
+        .fail(function() {
+          console.log("error");
+        })
+        .always(function() {
+          console.log("complete");
+        });
+
+      </script>
+    </ul>
+  </body>
+</html>

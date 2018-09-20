@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/startergate/GSM-Page#readme",
   "dependencies": {
+    "mongoose": "^5.2.16",
     "npm": "^6.4.1",
     "socket.io": "^2.1.1"
   }
