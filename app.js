@@ -19,13 +19,9 @@ app.get('/board/view', function (req, res) {
   switch (board) {
     case 'freeboard':
 
-
       res.sendFile();
       break;
     case 'notice':
-
-      break;
-    case 'suggest':
 
       break;
     case 'storage':
@@ -39,19 +35,29 @@ app.get('/board/view', function (req, res) {
 });
 
 app.get('/board/list', function (req, res) {
-  res.sendFile('/');
+  res.sendFile('./public/list.html');
 });
-
 app.get('/boardWork/list', function (req, res) {
   var list = "";
   for (var i = 0; i < array.length; i++) {
-    //게시번호, 제목
     //제목, 이름, 게시일자, 조회수 순
     // list += "<li>" + "<a href='/'>" + "<div class='title'>" + "</div>" + "<div class='name'>" + "</div>" + "<div class='uploadDate'>" + "</div>" + "<div class='hits'>" + "</div>" + "</a>" + "</li>";
   }
-  res.send('/board/list');
+  res.send(list);
 });
 
 app.get('/boardWork/view', function (req, res) {
-  res.send('/board/');
+  var board = req.query('board');
+  var postId = req.query('postid');
+  //DB 데이터 받고
+  var sendData =
+  {
+      'name': '글 제목',
+      'postTime': '게시 시간',
+      'visible': true,
+      'writerID': '게시 ID',
+      'hits': 0,
+      'content': ``
+  };
+  res.send('./board/');
 });
