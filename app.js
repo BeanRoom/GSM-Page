@@ -8,7 +8,6 @@ var mongoose = require('mongoose');
 
 var app = express();
 
-
 // 리다이렉션
 app.get('/', function (req, res) {
   res.redirect('/board/list');
@@ -34,21 +33,8 @@ app.get('/board/delete', function (req, res) {
 // 데이터 클라이언트 전송
 app.get('/boardWork/list', function (req, res) {
   var board = req.query('board');
-  var boardName = "";
-  switch (board) {
-    case 'freeboard':
-      boardName = "자유게시판";
-      res.sendFile();
-      break;
-    case 'notice':
-      boardName = "공지사항";
-      break;
-    case 'storage':
-      boardName = "자료실";
-      break;
-    default:
-      res.redirect('./404');
-  }
+
+  if (board !== 'freeboard' && board !== 'notice' && board !== 'storage') res.send('존재하지 않는 게시판입니다.');
   var list = "";
   for (var i = 0; i < array.length; i++) {
     // 제목, 이름, 게시일자, 조회수 순
@@ -97,7 +83,7 @@ app.get('/boardWork/edit/function', function (req, res) {
 app.get('/boardWork/delete/function', function (req, res) {
   var postId = req.query('postid');
   //DB 데이터 받고
-  mongoose;
+  // mongoose;
   res.send(sendData);
 });
 
